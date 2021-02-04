@@ -1,0 +1,14 @@
+App\Entity\Address:
+    attributes:
+        id:
+            groups: ['address-read']
+        city:
+            groups: ['address-read', 'address-write']
+        street:
+            groups: [ 'address-read', 'address-write' ]
+        location:
+            groups: [ 'address-read', 'address-write' ]
+        longitude:
+            groups: [ 'address-read', 'address-write' ]
+        latitude:
+            groups: [ 'address-read', 'address-write' ]

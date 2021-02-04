@@ -1,0 +1,62 @@
+App\Entity\MediaObject:
+    iri: 'http://schema:org/MediaObject'
+    properties:
+        contentUrl:
+            iri: 'http://schema.org/contentUrl'
+    attributes:
+        normalization_context:
+            groups: ['media_object_read']
+            swagger_definition_name: 'read'
+    collectionOperations:
+        get: ~
+        post:
+            method: POST
+            controller: 'App\Controller\CreateMediaObjectAction'
+            deserialize: false
+            validation_groups:
+                - 'Default'
+                - 'media_object_create'
+            openapi_context:
+                summary: 'Creates a MediaObject resource.'
+                requestBody:
+                    content:
+                        multipart/form-data:
+                            schema:
+                                type: object
+                                properties:
+                                    file:
+                                        type: string
+                                        format: binary
+                                        description: The file to upload
+                parameters:
+                    -   in: query
+                        name: asset
+                        type: string
+    itemOperations:
+        get: ~
+        delete: ~
+        put:
+            method: PUT
+            controller: 'App\Controller\UpdateMediaObjectAction'
+            deserialize: false
+            validation_groups:
+                - 'Default'
+            openapi_context:
+                summary: 'Updates the MediaObject resource.'
+                requestBody:
+                    content:
+                        multipart/form-data:
+                            schema:
+                                type: object
+                                properties:
+                                    file:
+                                        type: string
+                                        format: binary
+                                        description: The file to upload
+                parameters:
+                    -   in: path
+                        name: id
+                        type: string
+                    - in: query
+                      name: asset
+                      type: string

@@ -4,6 +4,7 @@ App\Entity\User:
             groups: ['user-read']
         username:
             groups: ['user-read', 'user-write']
+        address:
+            groups: [ 'user-read', 'user-write' ]
         plainPassword:
-            groups:
-                ['user-write']
+            groups: ['user-write']

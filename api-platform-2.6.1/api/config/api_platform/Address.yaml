@@ -1,0 +1,14 @@
+App\Entity\Address:
+    attributes:
+        normalization_context:
+            groups: ['address-read']
+            swagger_definition_name: 'read'
+        denormalization_context:
+            groups: ['address-write']
+            swagger_definition_name: 'write'
+    collectionOperations:
+        get:
+            filters:
+                - 'address.search_filter'
+                - 'address.boolean_filter'
+        post: ~

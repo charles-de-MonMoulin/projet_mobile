@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToOne;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
@@ -36,15 +39,26 @@ class User implements UserInterface
      */
     private string $password;
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    /**
+     * @ManyToOne(targetEntity="Address", inversedBy="users")
+     * @JoinColumn(name="address_id", referencedColumnName="id", nullable=true)
+     */
+    private ?Address $address = null;
+
+    /**
+     * @OneToOne(targetEntity="MediaObject", mappedBy="user")
+     */
+    private ?MediaObject $picture = null;
 
     /**
      * @SerializedName("password")
      */
-    private string $plainPassword;
+    private ?string $plainPassword = null;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * A visual identifier that represents this user.
@@ -64,19 +78,21 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPlainPassword(): string
+    public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
 
     /**
-     * @param string $plainPassword
+     * @param string|null $plainPassword
+     * @return User
      */
-    public function setPlainPassword(string $plainPassword): void
+    public function setPlainPassword(?string $plainPassword): User
     {
         $this->plainPassword = $plainPassword;
+        return $this;
     }
 
     /**
@@ -110,6 +126,24 @@ class User implements UserInterface
     {
         $this->password = $password;
 
+        return $this;
+    }
+
+    /**
+     * @return Address|null
+     */
+    public function getAddress(): ?Address
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param Address|null $address
+     * @return User
+     */
+    public function setAddress(?Address $address): User
+    {
+        $this->address = $address;
         return $this;
     }
 

@@ -1,0 +1,5 @@
+App\Entity\MediaObject:
+    properties:
+        file:
+            - NotNull:
+                  groups: ['media_object_create']
