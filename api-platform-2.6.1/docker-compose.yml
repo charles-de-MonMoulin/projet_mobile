@@ -43,7 +43,7 @@ services:
     ports:
       # HTTP
       - target: 80
-        published: 80
+        published: 8880
         protocol: tcp
       # HTTPS
       - target: 443

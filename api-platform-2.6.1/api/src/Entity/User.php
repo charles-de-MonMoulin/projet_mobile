@@ -84,6 +84,12 @@ class User implements UserInterface
     private ?string $email;
 
     /**
+     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private ?string $description;
+
+    /**
      * @SerializedName("password")
      */
     private ?string $plainPassword = null;
@@ -107,6 +113,24 @@ class User implements UserInterface
     {
         $this->username = $username;
 
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     * @return User
+     */
+    public function setDescription(?string $description): User
+    {
+        $this->description = $description;
         return $this;
     }
 

@@ -11,3 +11,10 @@ App\Entity\User:
             filters:
                 - 'user.search_filter'
         post: ~
+        get_current:
+            method: GET
+            controller: App\Controller\GetCurrentUserAction
+            path: /users/current
+            openapi_context:
+                summary: >
+                    Retrieves current user from your connection
