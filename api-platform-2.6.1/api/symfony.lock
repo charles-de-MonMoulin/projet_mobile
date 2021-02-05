@@ -158,6 +158,9 @@
     "guzzlehttp/psr7": {
         "version": "1.7.0"
     },
+    "jms/metadata": {
+        "version": "2.4.0"
+    },
     "laminas/laminas-code": {
         "version": "4.0.0"
     },
@@ -356,6 +359,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v5.2.3"
+    },
     "symfony/framework-bundle": {
         "version": "5.2",
         "recipe": {
@@ -388,6 +394,9 @@
     "symfony/http-kernel": {
         "version": "v5.2.1"
     },
+    "symfony/intl": {
+        "version": "v5.2.3"
+    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -411,6 +420,9 @@
         "files": [
             "config/packages/mercure.yaml"
         ]
+    },
+    "symfony/mime": {
+        "version": "v5.2.3"
     },
     "symfony/monolog-bridge": {
         "version": "v5.2.1"
@@ -452,6 +464,12 @@
         ]
     },
     "symfony/polyfill-intl-grapheme": {
+        "version": "v1.22.0"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.22.0"
+    },
+    "symfony/polyfill-intl-idn": {
         "version": "v1.22.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -592,6 +610,18 @@
     },
     "twig/twig": {
         "version": "v3.2.1"
+    },
+    "vich/uploader-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "c4f5755b37fb65b9c6a3cbdae91205c15a137ed4"
+        },
+        "files": [
+            "config/packages/vich_uploader.yaml"
+        ]
     },
     "webmozart/assert": {
         "version": "1.9.1"

@@ -1,0 +1,8 @@
+App\Entity\Game:
+    attributes:
+        id:
+            groups: ['game-read']
+        name:
+            groups: ['game-read', 'game-write']
+        description:
+            groups: [ 'game-read', 'game-write' ]

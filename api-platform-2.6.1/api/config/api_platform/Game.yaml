@@ -1,13 +1,13 @@
-App\Entity\User:
+App\Entity\Game:
     attributes:
         normalization_context:
-            groups: ['user-read']
+            groups: ['game-read']
             swagger_definition_name: 'read'
         denormalization_context:
-            groups: ['user-write']
+            groups: ['game-write']
             swagger_definition_name: 'write'
     collectionOperations:
         get:
             filters:
-                - 'user.search_filter'
+                - 'game.search_filter'
         post: ~

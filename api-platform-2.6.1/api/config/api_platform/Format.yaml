@@ -1,13 +1,13 @@
-App\Entity\User:
+App\Entity\Format:
     attributes:
         normalization_context:
-            groups: ['user-read']
+            groups: ['format-read']
             swagger_definition_name: 'read'
         denormalization_context:
-            groups: ['user-write']
+            groups: ['format-write']
             swagger_definition_name: 'write'
     collectionOperations:
         get:
             filters:
-                - 'user.search_filter'
+                - 'format.search_filter'
         post: ~

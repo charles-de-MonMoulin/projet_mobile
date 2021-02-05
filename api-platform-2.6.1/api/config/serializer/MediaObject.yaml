@@ -1,0 +1,12 @@
+App\Entity\MediaObject:
+    attributes:
+        id:
+            groups: ['media_object_read']
+        contentUrl:
+            groups: ['media_object_read']
+        updatedAt:
+            groups: ['media_object_read']
+        user:
+            groups: ['media_object_read']
+        filename:
+            groups: ['media_object_read']

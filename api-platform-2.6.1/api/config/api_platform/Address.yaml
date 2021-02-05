@@ -10,5 +10,4 @@ App\Entity\Address:
         get:
             filters:
                 - 'address.search_filter'
-                - 'address.boolean_filter'
         post: ~

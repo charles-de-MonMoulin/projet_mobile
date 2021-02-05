@@ -1,0 +1,10 @@
+App\Entity\Address:
+    attributes:
+        id:
+            groups: ['address-read']
+        name:
+            groups: ['address-read', 'address-write']
+        description:
+            groups: [ 'address-read', 'address-write' ]
+        game:
+            groups: [ 'address-read', 'address-write' ]

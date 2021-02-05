@@ -30,7 +30,7 @@ App\Entity\MediaObject:
                                         description: The file to upload
                 parameters:
                     -   in: query
-                        name: asset
+                        name: user
                         type: string
     itemOperations:
         get: ~
@@ -58,5 +58,5 @@ App\Entity\MediaObject:
                         name: id
                         type: string
                     - in: query
-                      name: asset
+                      name: user
                       type: string

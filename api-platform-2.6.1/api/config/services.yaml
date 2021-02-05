@@ -33,3 +33,6 @@ services:
     App\OpenApi\JwtDecorator:
         decorates: 'api_platform.openapi.factory'
         autoconfigure: false
+
+imports:
+    - { resource: 'api_filters/*' }

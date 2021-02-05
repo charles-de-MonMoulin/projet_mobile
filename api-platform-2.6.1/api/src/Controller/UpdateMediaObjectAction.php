@@ -38,16 +38,16 @@ final class UpdateMediaObjectAction
         /** @var MediaObject $mediaObject */
         $mediaObject = $this->entityManager->getRepository(MediaObject::class)->find($id);
         if ($uploadedFile) {
-            $mediaObject->setFile($uploadedFile);
+            $mediaObject->file = $uploadedFile;
         }
-        $mediaObject->setUpdatedAt(new DateTime());
+        $mediaObject->updatedAt = new DateTime();
 
-        $user = $request->get('asset');
+        $user = $request->get('user');
         if ($user) {
             /** @var User|null $currentUser */
             $currentUser = $this->entityManager->getRepository(User::class)->find($user);
             if ($currentUser) {
-                $mediaObject->setUser($currentUser);
+                $mediaObject->user = $user;
             }
         }
 

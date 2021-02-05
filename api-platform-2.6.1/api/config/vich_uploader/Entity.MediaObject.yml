@@ -1,0 +1,4 @@
+App\Entity\MediaObject:
+    file:
+        mapping: media_object
+        filename_property: filePath

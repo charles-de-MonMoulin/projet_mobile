@@ -39,15 +39,15 @@ final class CreateMediaObjectAction
         }
 
         $mediaObject = new MediaObject();
-        $mediaObject->setFile($uploadedFile);
-        $mediaObject->setFileName($uploadedFile->getClientOriginalName());
+        $mediaObject->file = $uploadedFile;
+        $mediaObject->filename = $uploadedFile->getClientOriginalName();
 
         $user = $request->get('user');
         if ($user) {
             /** @var User|null $currentUser */
             $currentUser = $this->entityManager->getRepository(User::class)->find($user);
             if ($currentUser) {
-                $mediaObject->setUser($user);
+                $mediaObject->user = $user;
             }
         }
 

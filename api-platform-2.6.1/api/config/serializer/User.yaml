@@ -6,5 +6,11 @@ App\Entity\User:
             groups: ['user-read', 'user-write']
         address:
             groups: [ 'user-read', 'user-write' ]
+        picture:
+            groups: [ 'user-read', 'user-write' ]
+        myFriends:
+            groups: [ 'user-read', 'user-write' ]
+        formats:
+            groups: [ 'user-read', 'user-write' ]
         plainPassword:
             groups: ['user-write']

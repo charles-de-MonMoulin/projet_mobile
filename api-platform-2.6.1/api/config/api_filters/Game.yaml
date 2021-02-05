@@ -1,7 +1,6 @@
 services:
-    address.search_filter:
+    game.search_filter:
         parent: 'api_platform.doctrine.orm.search_filter'
         arguments:
-            - 'city': 'ipartial'
-              'street': 'ipartial'
+            - 'name': 'ipartial'
         tags: ['api_platform.filter']
