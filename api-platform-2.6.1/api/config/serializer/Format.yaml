@@ -1,10 +1,10 @@
-App\Entity\Address:
+App\Entity\Format:
     attributes:
         id:
-            groups: ['address-read']
+            groups: ['format-read']
         name:
-            groups: ['address-read', 'address-write']
+            groups: ['format-read', 'format-write']
         description:
-            groups: [ 'address-read', 'address-write' ]
+            groups: [ 'format-read', 'format-write' ]
         game:
-            groups: [ 'address-read', 'address-write' ]
+            groups: [ 'format-read', 'format-write' ]

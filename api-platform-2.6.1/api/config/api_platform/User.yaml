@@ -1,5 +1,7 @@
 App\Entity\User:
     attributes:
+        order:
+            name: 'ASC'
         normalization_context:
             groups: ['user-read']
             swagger_definition_name: 'read'
@@ -18,3 +20,10 @@ App\Entity\User:
             openapi_context:
                 summary: >
                     Retrieves current user from your connection
+        get_swipe:
+            method: GET
+            controller: App\Controller\FindUserToSwipeAction
+            path: /users/swipe
+            openapi_context:
+                summary: >
+                    Retrieves user to swipe

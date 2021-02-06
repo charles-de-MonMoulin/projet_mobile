@@ -52,7 +52,6 @@ class MediaObject
     /**
      * @var File|null
      *
-     * @Assert\NotNull(groups={"media_object_create"})
      * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath")
      */
     public ?File $file = null;

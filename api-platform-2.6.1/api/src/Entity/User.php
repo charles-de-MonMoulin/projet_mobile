@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToOne;
-use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 
@@ -57,7 +58,7 @@ class User implements UserInterface
      * Many Users have Many Users.
      * @ManyToMany(targetEntity="User", mappedBy="myFriends")
      */
-    private PersistentCollection $friendsWithMe;
+    private Collection $friendsWithMe;
 
     /**
      * Many Users have many Users.
@@ -67,32 +68,39 @@ class User implements UserInterface
      *      inverseJoinColumns={@JoinColumn(name="friend_user_id", referencedColumnName="id")}
      *      )
      */
-    private PersistentCollection $myFriends;
+    private Collection $myFriends;
 
     /**
-     * @var PersistentCollection
+     * @var Collection
      *
      * @ManyToMany(targetEntity="Format", inversedBy="users")
      * @JoinTable(name="users_formats")
      */
-    private PersistentCollection $formats;
+    private Collection $formats;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $email;
+    private ?string $email = null;
 
     /**
      * @var string|null
      * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $description;
+    private ?string $description = null;
 
     /**
      * @SerializedName("password")
      */
     private ?string $plainPassword = null;
+
+    public function __construct()
+    {
+        $this->formats = new ArrayCollection();
+        $this->friendsWithMe = new ArrayCollection();
+        $this->myFriends = new ArrayCollection();
+    }
 
     public function getId(): int
     {
@@ -131,24 +139,6 @@ class User implements UserInterface
     public function setDescription(?string $description): User
     {
         $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * @return PersistentCollection
-     */
-    public function getFormats(): PersistentCollection
-    {
-        return $this->formats;
-    }
-
-    /**
-     * @param PersistentCollection $formats
-     * @return User
-     */
-    public function setFormats(PersistentCollection $formats): User
-    {
-        $this->formats = $formats;
         return $this;
     }
 
@@ -259,38 +249,56 @@ class User implements UserInterface
     }
 
     /**
-     * @return PersistentCollection
+     * @return Collection
      */
-    public function getFriendsWithMe(): PersistentCollection
+    public function getFriendsWithMe(): Collection
     {
         return $this->friendsWithMe;
     }
 
     /**
-     * @param PersistentCollection $friendsWithMe
+     * @param Collection $friendsWithMe
      * @return User
      */
-    public function setFriendsWithMe(PersistentCollection $friendsWithMe): User
+    public function setFriendsWithMe(Collection $friendsWithMe): User
     {
         $this->friendsWithMe = $friendsWithMe;
         return $this;
     }
 
     /**
-     * @return PersistentCollection
+     * @return Collection
      */
-    public function getMyFriends(): PersistentCollection
+    public function getMyFriends(): Collection
     {
         return $this->myFriends;
     }
 
     /**
-     * @param PersistentCollection $myFriends
+     * @param Collection $myFriends
      * @return User
      */
-    public function setMyFriends(PersistentCollection $myFriends): User
+    public function setMyFriends(Collection $myFriends): User
     {
         $this->myFriends = $myFriends;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getFormats(): Collection
+    {
+        return $this->formats;
+    }
+
+    /**
+     * @param Collection $formats
+     * @return User
+     */
+    public function setFormats(Collection $formats): User
+    {
+        $this->formats = $formats;
         return $this;
     }
 

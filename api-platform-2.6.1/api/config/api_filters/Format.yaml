@@ -3,5 +3,5 @@ services:
         parent: 'api_platform.doctrine.orm.search_filter'
         arguments:
             - 'name': 'ipartial'
-              'game': 'ipartial'
+              'game.name': 'ipartial'
         tags: ['api_platform.filter']
