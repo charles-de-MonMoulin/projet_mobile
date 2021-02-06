@@ -4,7 +4,6 @@ namespace App\Query\Doctrine\User;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -25,18 +24,17 @@ class FindUserForSwipe extends ServiceEntityRepository
     /**
      * @param string $username
      * @return User
-     * @throws NonUniqueResultException
      */
     public function __invoke(string $username): User
     {
         $query = $this->createQueryBuilder("user")
-            ->select("u.id")
-            ->from(User::class, 'u')
-            ->where('u.username != :username')
-            ->orderBy('rand')
-            ->setMaxResults(1)
+            ->select("user")
+            ->where('user.username != :username')
             ->setParameter('username', $username);
 
-        return $query->getQuery()->getOneOrNullResult();
+        $result = $query->getQuery()->getResult();
+        shuffle($result);
+
+        return $result[0];
     }
 }

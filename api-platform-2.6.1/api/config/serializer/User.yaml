@@ -14,6 +14,12 @@ App\Entity\User:
             groups: [ 'user-read', 'user-write' ]
         email:
             groups: [ 'user-read', 'user-write' ]
+        name:
+            groups: [ 'user-read', 'user-write' ]
+        birthday:
+            groups: [ 'user-read', 'user-write' ]
+        firstName:
+            groups: [ 'user-read', 'user-write' ]
         description:
             groups: [ 'user-read', 'user-write' ]
         plainPassword:

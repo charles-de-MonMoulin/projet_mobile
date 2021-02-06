@@ -3,5 +3,5 @@ services:
         parent: 'api_platform.doctrine.orm.search_filter'
         arguments:
             - 'username': 'ipartial'
-              'email': 'exact'
+              'email': 'ipartial'
         tags: ['api_platform.filter']

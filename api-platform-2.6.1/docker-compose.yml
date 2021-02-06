@@ -16,13 +16,6 @@ services:
       retries: 3
       start_period: 30s
 
-  pwa:
-    build:
-      context: ./pwa
-      target: api_platform_pwa_prod
-    environment:
-      API_PLATFORM_CLIENT_GENERATOR_ENTRYPOINT: http://caddy
-
   caddy:
     build:
       context: api/
@@ -32,7 +25,7 @@ services:
       - pwa
     environment:
       PWA_UPSTREAM: pwa:3000
-      SERVER_NAME: ${SERVER_NAME:-localhost, caddy:80}
+      SERVER_NAME: ${SERVER_NAME:-192.168.1.71, caddy:80}
       MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY:-!ChangeMe!}
       MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY:-!ChangeMe!}
     restart: unless-stopped
@@ -43,7 +36,7 @@ services:
     ports:
       # HTTP
       - target: 80
-        published: 8880
+        published: 8080
         protocol: tcp
       # HTTPS
       - target: 443

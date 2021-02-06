@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -91,6 +92,24 @@ class User implements UserInterface
     private ?string $description = null;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private string $firstName;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    private string $name;
+
+//    /**
+//     * @var DateTime
+//     * @ORM\Column(type="datetime", options={"default" = "CURRENT_TIMESTAMP"})
+//     */
+//    private DateTime $birthday;
+
+    /**
      * @SerializedName("password")
      */
     private ?string $plainPassword = null;
@@ -105,6 +124,60 @@ class User implements UserInterface
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     * @return User
+     */
+    public function setFirstName(string $firstName): User
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+//    /**
+//     * @return DateTime
+//     */
+//    public function getBirthday(): DateTime
+//    {
+//        return $this->birthday;
+//    }
+//
+//    /**
+//     * @param DateTime $birthday
+//     * @return User
+//     */
+//    public function setBirthday(DateTime $birthday): User
+//    {
+//        $this->birthday = $birthday;
+//        return $this;
+//    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return User
+     */
+    public function setName(string $name): User
+    {
+        $this->name = $name;
+        return $this;
     }
 
     /**
@@ -143,18 +216,18 @@ class User implements UserInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      * @return User
      */
-    public function setEmail(string $email): User
+    public function setEmail(?string $email): User
     {
         $this->email = $email;
         return $this;
